@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wack a Mole</title>
+    <style>
+        .mainDiv {
+            height: 500px;
+            width: 800px;
+            margin: auto;
+            background-color: #006990;
+            justify-content: center;
+        }
+
+        .div {
+            height: 150px;
+            width: 150px;
+            margin: 2px;
+        }
+
+        .bg-brown {
+            background-color: #7F3E05;
+        }
+
+        .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .wrap100 {
+            display: flex;
+            flex-wrap: wrap;
+            flex-basis: 100% -15px;
+            max-height: 1000px;
+        }
+
+        .align {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 class="align">-Wack a' Mole-</h1>
+    <div class="align">Time Left
+        <p id="timer">60</p>
+        <button onclick="myTimerObj.start()">Start counter</button>
+        <button onclick="myTimerObj.end()">Stop counter</button>
+    </div>
+    <div class="flex-wrap mainDiv">
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+        <div class="bg-brown div wrap100"></div>
+    </div>
+    <script>
+        let myTimerObj = (function (document) {
+            let myTimer;
+            function start() {
+                myTimer = setInterval(myClock, 1000);
+                let c = 60;
+                function myClock() {
+                    document.getElementById("timer").innerHTML = --c;
+                    if (c == 0) {
+                        clearInterval(myTimer);
+                        alert("Reached zero");
+                    }
+                }
+            }
+            function end() {
+                clearInterval(myTimer)
+            }
+            return { start: start, end: end };
+        })(document);
+    </script>
+</body>
+
+</html>
